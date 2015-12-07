@@ -4,12 +4,9 @@ gates = {}
 f = open("input.txt","r")
 
 def findValue(variable):
-    # some sort of memoization
-    try:
-        if variable in gates:
-            return gates[variable]
-    except ValueError:
-        pass
+    # memoization
+    if variable in gates:
+        return gates[variable]
 
     # if not found, hope it's an integer!
     try:
@@ -18,7 +15,7 @@ def findValue(variable):
     except ValueError:
         pass
 
-    #if we get here... oh no
+    # if we get here... oh no
     operationList = expressions[variable].split(" ")
 
     if len(operationList) == 3:
